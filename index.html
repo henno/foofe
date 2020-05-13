@@ -1,0 +1,48 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+    <head>
+        <meta charset="utf-8">
+        <title>FooFe</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#fafafa">
+    </head>
+
+    <body>
+
+        <div id="example">
+            <button @click="getHello">getHello</button>
+        </div>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script>
+            var vm = new Vue({
+                el: '#example',
+                data: {
+                    a: 0
+                },
+                methods: {
+                    getHello: function(){
+                        axios.get('https://foobe.herokuapp.com/')
+                            .then(function (response) {
+                                // handle success
+                                console.log(response)
+                                alert(response.data);
+                            })
+                            .catch(function (error) {
+                                // handle error
+                                console.log(error)
+                                alert(error);
+                            })
+                            .then(function () {
+                                console.log('done')
+                                // always executed
+                            });
+                    }
+                }
+            });
+        </script>
+    </body>
+
+</html>
